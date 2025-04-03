@@ -1,5 +1,6 @@
 package com.example.demo.user.services;
 
+import com.example.demo.shared.errors.NotFoundError;
 import com.example.demo.user.model.UserModel;
 import com.example.demo.user.repositories.UserRepository;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class DetailUserService {
         Optional<UserModel> user = userRepository.findById(id);
 
         if(user.isEmpty()){
-            throw new RuntimeException("User not found");
+            throw new NotFoundError("User not found");
         }
 
        return user.get();
