@@ -30,7 +30,7 @@ public class GlobalValidationException {
     public ResponseEntity<ApiErrorResponse> handleConflictError(ConflictError e) {
         List<String> errors = new ArrayList<>();
         errors.add(e.getMessage());
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ApiErrorResponse(400,"Erro de Conflicta",errors));
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ApiErrorResponse(409,"Erro de Conflito",errors));
     }
 
 }

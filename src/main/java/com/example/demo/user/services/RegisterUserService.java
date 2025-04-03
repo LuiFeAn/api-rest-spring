@@ -3,7 +3,7 @@ package com.example.demo.user.services;
 import com.example.demo.shared.errors.ConflictError;
 import com.example.demo.user.model.UserModel;
 import com.example.demo.user.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
