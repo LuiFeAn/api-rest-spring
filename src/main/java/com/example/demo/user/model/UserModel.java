@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Entity(name = "usuario")
@@ -35,6 +36,11 @@ public class UserModel {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public void hashPassword(){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        this.password = encoder.encode(this.password);
     }
 
     public long getId() {

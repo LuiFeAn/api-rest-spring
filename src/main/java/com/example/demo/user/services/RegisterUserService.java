@@ -17,13 +17,17 @@ public class RegisterUserService {
         this.userRepository = userRepository;
     }
 
-    public void execute(UserModel user){
+    public void execute(UserModel dto){
 
-        Optional<UserModel> emailAlreadyExists = userRepository.findByEmail(user.getEmail());
+        Optional<UserModel> emailAlreadyExists = userRepository.findByEmail(dto.getEmail());
 
         if(emailAlreadyExists.isPresent()){
             throw new ConflictError("Email already exists");
         }
+
+        UserModel user = new UserModel(dto.getUsername(),dto.getEmail(),dto.getPassword());
+
+        user.hashPassword();
 
         this.userRepository.save(user);
     }
